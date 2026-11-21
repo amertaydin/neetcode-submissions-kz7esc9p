@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        vector<vector<int>> vc(m, vector<int>(n, 0));
+
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                if (i == m - 1 || j == n - 1) {
+                    vc[i][j] = 1;
+                } else {
+                    vc[i][j] = vc[i + 1][j] + vc[i][j + 1];
+                }
+            }
+        }
+
+        return vc[0][0];
+    }
+};
